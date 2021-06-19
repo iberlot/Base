@@ -1,0 +1,8 @@
+#Archivo de configuracion del sistema
+version=1
+titulo=Base
+autor=iberlot
+contacto=iberlot@usal.edu.ar
+descripcion=Modelo basico de aplicacion en java con MVC, DAO, Factory y FileManager para usar en las aplicciones de la materia Programacion Avanzada
+rutaDatos=Datos/
+
