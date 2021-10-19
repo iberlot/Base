@@ -36,7 +36,7 @@ public class PrincipalController {
 
 	/**
 	 * Constructor de la clase
-	 *
+	 * le agregamos cosas al archivo
 	 */
 	public PrincipalController() {
 		// TODO Auto-generated constructor stub
