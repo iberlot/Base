@@ -11,6 +11,8 @@
 package views.frames;
 
 import java.awt.BorderLayout;
+import java.awt.GraphicsConfiguration;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -33,18 +35,11 @@ import events.PrincipalEventos;
 public class FramePrincipal extends JFrame {
 
 	/**
-	 * Numero de version de la clase
-	 *
-	 * @var long serialVersionUID
-	 */
-	private static final long serialVersionUID = 2964753219416236098L;
-
-	/**
 	 * JPanel que se va a cargar
 	 *
 	 * @var JPanel contentPane
 	 */
-	private JPanel contentPane;
+	private JPanel contentPane = new JPanel();
 	private JMenuBar barraMenu = new JMenuBar();
 	private JMenu menuFile = new JMenu("File");
 	private JMenu menuAyuda = new JMenu("Ayuda");
@@ -59,12 +54,6 @@ public class FramePrincipal extends JFrame {
 	 * Constructor de la clase. Create the frame.
 	 */
 	public FramePrincipal() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
 
 		this.evento = new PrincipalEventos(this);
 		this.init();
@@ -74,7 +63,6 @@ public class FramePrincipal extends JFrame {
 	 * Esta funcion inicializa todos los elementos del frame y lo muestra.
 	 */
 	private void init() {
-
 		setTitle(this.titulo);
 
 		this.barraMenu.add(menuFile);
@@ -87,8 +75,42 @@ public class FramePrincipal extends JFrame {
 
 		setJMenuBar(barraMenu);
 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+
+		setContentPane(contentPane);
+
 		itemMenuAyudaVersion.addActionListener(this.evento);
 		itemMenuFileCerrar.addActionListener(this.evento);
+	}
+
+	/**
+	 * @param gc
+	 */
+	public FramePrincipal(GraphicsConfiguration gc) {
+		super(gc);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param title
+	 * @throws HeadlessException
+	 */
+	public FramePrincipal(String title) throws HeadlessException {
+		super(title);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param title
+	 * @param gc
+	 */
+	public FramePrincipal(String title, GraphicsConfiguration gc) {
+		super(title, gc);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -96,13 +118,6 @@ public class FramePrincipal extends JFrame {
 	 */
 	public String getTitulo() {
 		return titulo;
-	}
-
-	/**
-	 * @param titulo para cargar en titulo
-	 */
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 	/**

@@ -10,8 +10,11 @@
  */
 package views.panels;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import events.VersionEventos;
 
@@ -31,17 +34,14 @@ public class VersionPanel extends Paneles {
 	 */
 	private static final long serialVersionUID = 2178390165860214036L;
 
+	public JPanel panelTitulo = new JPanel();
+
 	public JLabel lblTitulo = new JLabel("About");
-
-	public JLabel lblPrograma;
-
-	public JLabel lblVersion;
-
-	public JLabel lblDescripcion;
-
-	public JLabel lblAutor;
-
-	public JLabel lblContacto;
+	public JLabel lblPrograma = new JLabel("Programa");
+	public JLabel lblVersion = new JLabel("Version");
+	public JLabel lblDescripcion = new JLabel("Descripcion");
+	public JLabel lblAutor = new JLabel("Autor");
+	public JLabel lblContacto = new JLabel("Contacto");
 
 	public JButton btnCerrar = new JButton("Cerrar");
 
@@ -51,31 +51,48 @@ public class VersionPanel extends Paneles {
 	public VersionPanel() {
 		evento = new VersionEventos(this);
 		setLayout(null);
+		init();
 	}
 
 	@Override
 	public void init() {
 
+		panelTitulo.setBackground(Color.YELLOW);
+		panelTitulo.setBounds(0, 0, 450, 42);
+		add(panelTitulo);
+
 		lblTitulo.setBounds(164, 11, 100, 14);
-		add(lblTitulo);
+		panelTitulo.add(lblTitulo);
 
-		lblPrograma.setBounds(10, 39, 150, 14);
-		add(lblPrograma);
-
-		lblVersion.setBounds(10, 64, 150, 14);
-		add(lblVersion);
-
-		lblDescripcion.setBounds(10, 94, 430, 85);
-		add(lblDescripcion);
-
-		lblAutor.setBounds(10, 190, 150, 14);
-		add(lblAutor);
-
-		lblContacto.setBounds(10, 215, 200, 14);
-		add(lblContacto);
+		JPanel panelBotonera = new JPanel();
+		panelBotonera.setBackground(Color.CYAN);
+		panelBotonera.setBounds(0, 259, 450, 41);
+		add(panelBotonera);
 
 		btnCerrar.setBounds(351, 266, 89, 23);
-		add(btnCerrar);
+		panelBotonera.add(btnCerrar);
+
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setBackground(Color.PINK);
+		panelPrincipal.setBounds(0, 42, 450, 216);
+		panelPrincipal.setLayout(null);
+		add(panelPrincipal);
+
+		lblPrograma.setBounds(10, 22, 150, 14);
+		panelPrincipal.add(lblPrograma);
+
+		lblVersion.setBounds(10, 64, 150, 14);
+		panelPrincipal.add(lblVersion);
+
+		lblDescripcion.setBounds(10, 94, 430, 85);
+		panelPrincipal.add(lblDescripcion);
+
+		lblAutor.setBounds(10, 190, 150, 14);
+		panelPrincipal.add(lblAutor);
+
+		lblContacto.setBounds(10, 215, 200, 14);
+		panelPrincipal.add(lblContacto);
+
 	}
 
 	/**
@@ -168,5 +185,4 @@ public class VersionPanel extends Paneles {
 	public JButton getBtnCerrar() {
 		return btnCerrar;
 	}
-
 }
